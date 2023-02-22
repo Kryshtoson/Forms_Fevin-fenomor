@@ -3,7 +3,6 @@ import pandas as pd
 import numpy as np
 import sys
 
-# x = filename_out
 for x in ['Fevin', 'Fenomor']:
     print(x)
 
