@@ -1,45 +1,20 @@
-#!/usr/bin/env python
-# -*- coding: utf8 -*-
+import calendar
 import datetime
 import os
 import pandas as pd
 import itertools
 from fpdf import FPDF
 import sys
-
-
-def switcher(input):
-    match input:
-        case "1":
-            output = "Skalni step, Svaty kopecek"
-        case "2":
-            output = "Pechavovy travnik, Svaty kopecek"
-        case "3":
-            output = "Sprasova step, Milovicka stran"
-        case "4":
-            output = "Skalni step, Devin"
-        case "5":
-            output = "Pechavovy travnik, Devin"
-        case "6":
-            output = "Sprasova step, Vysoky roh"
-        case "7":
-            output = "Skalni step, Kotel"
-        case "8":
-            output = "Pechavovy travnik, Stolova hora"
-        case "9":
-            output = "Sprasova step, Lisci vrch"
-    return output
-
 x = 'Fevin'
 for x in ['Fevin', 'Fenomor']:
     print(x)
 
     if x == 'Fevin':
-        path = 'C:\\Users\\krystof\\OneDrive - MUNI\\Devin\\Fevin\\Fevin-2019-2023.xlsx'
+        path = 'C:\\Users\\krystof\\OneDrive - MUNI\\Děvín\\Fevin\\Fevin-2019-2023.xlsx'
         letters_f = [f"F{i}" for i in range(1, 8)]
         letters_p = [f"P{i}" for i in range(1, 7)]
     elif x == 'Fenomor':
-        path = 'C:\\Users\\krystof\\OneDrive - MUNI\\Devin\\Fenomor\\Fenomor_2019-2022.xlsx'
+        path = 'C:\\Users\\krystof\\OneDrive - MUNI\\Děvín\\Fenomor\\Fenomor_2019-2022.xlsx'
         letters_f = [f"F{i}" for i in range(1, 10)]
         letters_p = [f"-{i}" for i in range(1, 7)]
     else:
@@ -59,9 +34,8 @@ for x in ['Fevin', 'Fenomor']:
     # species_row width: 45
     cw = 6.7  # cell width
     ch = 4.8  # cell height
-    left_margin = 5 # remove left margin
-    tot_rows = 33
 
+    tot_rows = 33
 
     for i in plots:
         print(i)
@@ -71,13 +45,12 @@ for x in ['Fevin', 'Fenomor']:
         m = [a + b for a, b in zip([str(u)[0:3] for u in df.columns[[1, 4, 7]]], [str(u)[4:6] for u in df.columns[[1, 4, 7]]])]
 
         pdf.add_page() # new page for new plot
-        pdf.set_auto_page_break(False, margin = 0.0)
+        pdf.set_auto_page_break(0, margin = 0.0)
         # --------------------------------------------
         # header (static)
         # --------------------------------------------
 
         # mesice v zahlavi
-        pdf.set_left_margin(10)
         pdf.set_font('helvetica', 'B', 10)
         pdf.cell(45, ch, '', border=0)
         pdf.cell(cw * 3, ch, m[0], align='C', border=0)
@@ -177,9 +150,9 @@ for x in ['Fevin', 'Fenomor']:
 
         # horizontal ones
 
-        cord_y = 42.2 + ch-1 #- 5
-        cord_x1 = 11.1 #- 5
-        cord_x2 = 10 + 45 + (cw*3)*4 #- 5
+        cord_y = 42.2 + ch-1
+        cord_x1 = 11.1
+        cord_x2 = 10 + 45 + (cw*3)*4
 
         for w in range(0, tot_rows):
             pdf.line(x1=cord_x1, x2=cord_x2,
@@ -188,9 +161,9 @@ for x in ['Fevin', 'Fenomor']:
 
         # vertical ones
 
-        cord_y1 = 10 + ch-1 #- 5
-        cord_y2 = 171.8 + (4.8*6) + ch-1 - 4.8 #- 5
-        cord_x = 10 + 45 #- 5
+        cord_y1 = 10 + ch-1
+        cord_y2 = 171.8 + (4.8*6) + ch-1 -4.8
+        cord_x = 10 + 45
         for w in range(0, 4):
             pdf.line(x1=cord_x, x2=cord_x,
                      y1=cord_y1, y2=cord_y2)
@@ -198,17 +171,12 @@ for x in ['Fevin', 'Fenomor']:
 
         #pdf.rect(x=20, y=20, w=50, h=55, style='')
 
-        if x == 'Fevin':
-            pdf.set_xy(y=206.5-4.8, x=0)
-            pdf.set_font("Helvetica", 'B', 7)
-            pdf.cell(10 + 45 + (cw*3)*4, 1, 'Thank you for your help!', align='R', border=0)
-        else:
-            pdf.set_xy(y=206.5-4.8, x=10)
-            pdf.set_font("Helvetica", 'B', 7)
-            pdf.cell(50, 1, switcher(i[1]), align='L', border=0)
-            pdf.set_xy(y=206.5 - 4.8, x=85)
-            pdf.cell(50, 1, 'Thank you for your help!', align='R', border=0)
+        # todo 'thank you for your help' placer
+        pdf.set_xy(y = 206.5-4.8, x = 0)
+        pdf.set_font("Helvetica", 'B', 7)
+        pdf.cell(10 + 45 + (cw*3)*4, 1, 'Thank you for your help!', align='R', border=0)
         pdf.ln()
+
     pdf.output('C:\\Users\\krystof\\OneDrive - MUNI\\Devin\\' + str(datetime.datetime.now().date()) + '_forms_' + x + '.pdf')
 
-os.startfile('C:\\Users\\krystof\\OneDrive - MUNI\\Devin\\')
+os.startfile(os.getcwd())
