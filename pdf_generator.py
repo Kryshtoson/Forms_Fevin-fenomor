@@ -30,7 +30,6 @@ def switcher(input):
             output = "Sprasova step, Lisci vrch"
     return output
 
-x = 'Fevin'
 for x in ['Fevin', 'Fenomor']:
     print(x)
 
@@ -66,6 +65,7 @@ for x in ['Fevin', 'Fenomor']:
     for i in plots:
         print(i)
         # reads prepared forms (new_forms.py)
+        #df = pd.read_excel('out\\' + x + '.xlsx', sheet_name='F1P1', dtype=str)
         df = pd.read_excel('out\\' + x + '.xlsx', sheet_name=i, dtype=str)
         # read headers and subtract relevant months [df.columns]
         m = [a + b for a, b in zip([str(u)[0:3] for u in df.columns[[1, 4, 7]]], [str(u)[4:6] for u in df.columns[[1, 4, 7]]])]

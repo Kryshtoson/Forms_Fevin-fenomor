@@ -5,7 +5,7 @@ import matplotlib.dates as mdates
 import seaborn as sns
 # import sys
 
-path = 'C:\\Users\\krystof\\OneDrive - MUNI\\Děvín\\Fevin\\Fevin-2019-2023.xlsx'
+path = 'C:\\Users\\krystof\\OneDrive - MUNI\\Devin\\Fevin\\Fevin-2019-2023.xlsx'
 fevin = pd.read_excel(path, 'data').merge(pd.read_excel(path, 'traits'))
 fevin2 = fevin.copy()
 fevin2['history'] = 'All'
@@ -28,4 +28,4 @@ ax.legend(loc='upper left')
 ax.xaxis.set_major_formatter(mdates.DateFormatter('%y\n%b'))
 ax.set(xlabel='', ylabel='Number of species')
 ax.set_xticks(breaks['date'])
-plt.savefig('plot.png', dpi=300, bbox_inches='tight', pad_inches=0.5)
+plt.savefig('plot2.png', dpi=300, bbox_inches='tight', pad_inches=0.5)

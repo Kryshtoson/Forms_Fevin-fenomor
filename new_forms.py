@@ -14,7 +14,7 @@ for x in ['Fevin', 'Fenomor']:
         print('specify source')
         sys.exit()
 
-    os.startfile('C:\\Users\\krystof\\OneDrive - MUNI\\Děvín\\Fenomor\\')
+    #os.startfile('C:\\Users\\krystof\\OneDrive - MUNI\\Devin\\Fenomor\\')
 
     # I call it fevin but it may be fenomor too in the script
     fevin = pd.read_excel(path, 'data')
