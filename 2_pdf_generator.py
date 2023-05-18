@@ -34,11 +34,11 @@ for x in ['Fevin', 'Fenomor']:
     print(x)
 
     if x == 'Fevin':
-        path = 'C:\\Users\\krystof\\OneDrive - MUNI\\Devin\\Fevin\\Fevin-2019-2023.xlsx'
+        path = 'C:\\Users\\krystof\\OneDrive - MUNI\\Devin\\Fevin\\Fevin.xlsx'
         letters_f = [f"F{i}" for i in range(1, 8)]
         letters_p = [f"P{i}" for i in range(1, 7)]
     elif x == 'Fenomor':
-        path = 'C:\\Users\\krystof\\OneDrive - MUNI\\Devin\\Fenomor\\Fenomor_2019-2022.xlsx'
+        path = 'C:\\Users\\krystof\\OneDrive - MUNI\\Devin\\Fenomor\\Fenomor.xlsx'
         letters_f = [f"F{i}" for i in range(1, 10)]
         letters_p = [f"-{i}" for i in range(1, 7)]
     else:

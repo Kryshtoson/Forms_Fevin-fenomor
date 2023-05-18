@@ -7,9 +7,9 @@ for x in ['Fevin', 'Fenomor']:
     print(x)
 
     if x == 'Fevin':
-        path = 'C:\\Users\\krystof\\OneDrive - MUNI\\Devin\\Fevin\\Fevin-2019-2023.xlsx'
+        path = 'C:\\Users\\krystof\\OneDrive - MUNI\\Devin\\Fevin\\Fevin.xlsx'
     elif x == 'Fenomor':
-        path = 'C:\\Users\\krystof\\OneDrive - MUNI\\Devin\\Fenomor\\Fenomor_2019-2022.xlsx'
+        path = 'C:\\Users\\krystof\\OneDrive - MUNI\\Devin\\Fenomor\\Fenomor.xlsx'
     else:
         print('specify source')
         sys.exit()
