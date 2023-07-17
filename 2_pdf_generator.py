@@ -6,6 +6,7 @@ import pandas as pd
 import itertools
 from fpdf import FPDF
 import sys
+import re
 
 
 def switcher(input):
@@ -139,6 +140,9 @@ for x in ['Fevin', 'Fenomor']:
 
         for r in range(0,len(df)):
             r_data=df.loc[r].to_numpy()
+            # z '1.0' na '1'
+            for rs in [2,5,8]: r_data[rs] = re.sub(r'\.0', '', str(r_data[rs]))
+
             for c in range(0, 11):
                 if c == 0:
                     pdf.set_font("Helvetica", 'I', 8)
